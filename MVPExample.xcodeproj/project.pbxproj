@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC18C1C928B236A500CEC24C /* SecodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC18C1C828B236A500CEC24C /* SecodViewController.swift */; };
 		EC505C8128B168AE003EFA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC505C8028B168AE003EFA42 /* AppDelegate.swift */; };
 		EC505C8328B168AE003EFA42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC505C8228B168AE003EFA42 /* SceneDelegate.swift */; };
 		EC505C8528B168AE003EFA42 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC505C8428B168AE003EFA42 /* MainViewController.swift */; };
@@ -19,6 +20,7 @@
 		EC505CB528B16CC2003EFA42 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC505CB428B16CC2003EFA42 /* MainPresenter.swift */; };
 		EC505CB728B16F76003EFA42 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC505CB628B16F76003EFA42 /* Builder.swift */; };
 		EC505CBE28B1809C003EFA42 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC505CBD28B1809C003EFA42 /* NetworkServices.swift */; };
+		EC505CC028B2327C003EFA42 /* SecondPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC505CBF28B2327C003EFA42 /* SecondPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC18C1C828B236A500CEC24C /* SecodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecodViewController.swift; sourceTree = "<group>"; };
 		EC505C7D28B168AE003EFA42 /* MVPExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVPExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC505C8028B168AE003EFA42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC505C8228B168AE003EFA42 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		EC505CB428B16CC2003EFA42 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		EC505CB628B16F76003EFA42 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		EC505CBD28B1809C003EFA42 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
+		EC505CBF28B2327C003EFA42 /* SecondPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				EC505C8428B168AE003EFA42 /* MainViewController.swift */,
+				EC18C1C828B236A500CEC24C /* SecodViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				EC505CB428B16CC2003EFA42 /* MainPresenter.swift */,
+				EC505CBF28B2327C003EFA42 /* SecondPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -310,8 +316,10 @@
 				EC505CB528B16CC2003EFA42 /* MainPresenter.swift in Sources */,
 				EC505C8128B168AE003EFA42 /* AppDelegate.swift in Sources */,
 				EC505CB128B169CA003EFA42 /* CommentModel.swift in Sources */,
+				EC505CC028B2327C003EFA42 /* SecondPresenter.swift in Sources */,
 				EC505CBE28B1809C003EFA42 /* NetworkServices.swift in Sources */,
 				EC505C8328B168AE003EFA42 /* SceneDelegate.swift in Sources */,
+				EC18C1C928B236A500CEC24C /* SecodViewController.swift in Sources */,
 				EC505CB728B16F76003EFA42 /* Builder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

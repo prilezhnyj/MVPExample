@@ -44,6 +44,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let comment = presenter.comments?[indexPath.row]
+//        let ns = NetworkServices()
+        let secondVC = BuilderModule.createSecondModule(comment: comment)
+        present(secondVC, animated: true)
+    }
     
 }
 
