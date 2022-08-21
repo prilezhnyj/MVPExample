@@ -9,30 +9,64 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let infoLabel = UILabel()
+    let infoTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
     
     var presenter: MainViewPresenterProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        setupConstr()
         
-        view.addSubview(infoLabel)
-        infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        infoLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        infoLabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        infoLabel.widthAnchor.constraint(equalToConstant: 350).isActive = true
-        infoLabel.textAlignment = .center
-        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoTableView.delegate = self
+        infoTableView.dataSource = self
+        infoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellID")
         
-        presenter.showInfo()
+        
+        presenter.getComments()
     }
+}
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.comments?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let comment = presenter.comments?[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath)
+        cell.textLabel?.text = comment?.name
+        return cell
+    }
+    
+    
 }
 
 // MARK: - ViewProtocol
 extension MainViewController: ViewProtocol {
-    func setInfo(info: String) {
-        infoLabel.text = info
+    func sucsess() {
+        infoTableView.reloadData()
+    }
+    
+    func failure() {
+        print("ERROR")
+    }
+    
+}
+
+extension MainViewController {
+    private func setupConstr() {
+        view.addSubview(infoTableView)
+        NSLayoutConstraint.activate([
+            infoTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            infoTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            infoTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            infoTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
     }
 }
 

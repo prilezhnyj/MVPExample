@@ -7,26 +7,43 @@
 
 import Foundation
 
-protocol ViewProtocol {
-    func setInfo(info: String)
+protocol ViewProtocol: AnyObject {
+    func sucsess()
+    func failure()
 }
 
 protocol MainViewPresenterProtocol {
-    init(view: ViewProtocol, user: UserModel)
-    func showInfo()
+    init(view: ViewProtocol, networkServices: NetworkServicesProtocol)
+    func getComments()
+    var comments: [CommentModel]? { get set }
 }
 
 class MainViewPresenter: MainViewPresenterProtocol {
-    let view: ViewProtocol
-    let user: UserModel
+    var comments: [CommentModel]?
     
-    required init(view: ViewProtocol, user: UserModel) {
+    weak var view: ViewProtocol?
+    let networkServices: NetworkServicesProtocol!
+    
+    required init(view: ViewProtocol, networkServices: NetworkServicesProtocol) {
         self.view = view
-        self.user = user
+        self.networkServices = networkServices
+        getComments()
     }
     
-    func showInfo() {
-        let info = "My name is \(user.name), I am \(user.age) years old!"
-        view.setInfo(info: info)
+    func getComments() {
+        networkServices.getComments { [weak self ]result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    print(data!)
+                    self.comments = data
+                    self.view?.sucsess()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self.view?.failure()
+                }
+            }
+        }
     }
 }
